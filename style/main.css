@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  cursor: pointer;
+}
+
+li {
+  list-style-type: none;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.header {
+  background: hsl(209, 23%, 22%);
+  box-shadow: 0 10px 20px 1px rgba(13, 13, 13, 0.34);
+  color: hsl(0, 0%, 100%);
+  padding: 20px 0;
+}
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main {
+  background: hsl(207, 26%, 17%);
+}
+
+.filters__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 0;
+}
+.filters__input img {
+  position: absolute;
+  top: 12.3%;
+  left: 13%;
+  width: 20px;
+}
+.filters__input input {
+  width: 400px;
+  padding: 12px 40px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: hsl(0, 0%, 100%);
+  background: hsl(209, 23%, 22%);
+}
+.filters__input input::-moz-placeholder {
+  color: hsl(0, 0%, 100%);
+}
+.filters__input input::placeholder {
+  color: hsl(0, 0%, 100%);
+}
+
+.dark {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.dark img {
+  width: 20px;
+  margin-right: 10px;
+}
+.dark:hover {
+  opacity: 0.8;
+}
+
+.hidden {
+  display: none;
+}
+
+.countries__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+.countries__info {
+  padding: 20px 24px 40px;
+  font-size: 18px;
+  color: hsl(0, 0%, 100%);
+}
+.countries__info span {
+  opacity: 1;
+}
+
+.country {
+  background: hsl(209, 23%, 22%);
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+.country__image {
+  width: 100%;
+  border-radius: 5px;
+  height: 12rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.country__title {
+  margin-bottom: 20px;
+}
+.country:hover {
+  transform: translate(0px, 7px);
+}
+
+.filters__select {
+  position: relative;
+}
+
+.filters__select-btn {
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding: 12px 20px;
+  color: hsl(0, 0%, 100%);
+  background: hsl(209, 23%, 22%);
+  gap: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.filters__select-btn img {
+  width: 20px;
+}
+
+.filters__select-menu {
+  width: 100%;
+  position: absolute;
+  top: 75px;
+  color: hsl(0, 0%, 100%);
+  background: hsl(209, 23%, 22%);
+  z-index: 999;
+}
+
+.region__list {
+  padding: 16px;
+}
+.region__list-item {
+  margin-bottom: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.region__list-item:hover {
+  opacity: 0.6;
+}/*# sourceMappingURL=main.css.map */

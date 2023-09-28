@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap");
+@import "./variables.scss";
+@mixin flex-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+a {
+  cursor: pointer;
+}
+li {
+  list-style-type: none;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.header {
+  background: $Dark-Blue;
+  box-shadow: 0 10px 20px 1px rgba(13, 13, 13, 0.34);
+  color: $White;
+  padding: 20px 0;
+  &__container {
+    @include flex-center;
+  }
+}
+.main {
+  background: $Very-Dark-Blue;
+}
+.filters {
+  &__container {
+    @include flex-center;
+    padding: 40px 0;
+  }
+  &__input {
+    img {
+      //TODO FIX
+      position: absolute;
+      top: 12.3%;
+      left: 13%;
+
+      width: 20px;
+    }
+    input {
+      width: 400px;
+      padding: 12px 40px;
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      color: $White;
+      background: $Dark-Blue;
+      &::placeholder {
+        color: $White;
+      }
+    }
+  }
+}
+.dark {
+  @include flex-center;
+  cursor: pointer;
+  img {
+    width: 20px;
+    margin-right: 10px;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.hidden {
+  display: none;
+}
+.countries {
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  &__info {
+    padding: 20px 24px 40px;
+    font-size: 18px;
+    color: $White;
+    span {
+      opacity: 1;
+    }
+  }
+}
+.countries__container {
+}
+.country {
+  background: $Dark-Blue;
+  border-radius: 5px;
+  transition: all 0.5s;
+  &__image {
+    width: 100%;
+    border-radius: 5px;
+    height: 12rem;
+    object-fit: cover;
+  }
+  &__title {
+    margin-bottom: 20px;
+  }
+  &:hover {
+    transform: translate(0px, 7px);
+  }
+}
+.filters__select {
+  position: relative;
+}
+.filters__select-btn {
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding: 12px 20px;
+  color: $White;
+  background: $Dark-Blue;
+  gap: 10px;
+  font-size: 18px;
+  cursor: pointer;
+
+  img {
+    width: 20px;
+  }
+}
+.filters__select-menu {
+  width: 100%;
+  position: absolute;
+  top: 75px;
+  color: $White;
+  background: $Dark-Blue;
+  z-index: 999;
+}
+.region__list {
+  padding: 16px;
+  &-item {
+    margin-bottom: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}

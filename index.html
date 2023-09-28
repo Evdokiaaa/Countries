@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/main.css" />
+    <title>REST Countries API</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__container">
+          <div class="header__title">
+            <h2>Where in the world?</h2>
+          </div>
+          <div class="header__theme">
+            <div class="dark">
+              <img src="./moon-outline.svg" alt="dark theme" />
+              <span>Dark mode</span>
+            </div>
+            <div class="light hidden">
+              <img src="" alt="" />
+              <span>Light mode</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <section class="filters">
+        <div class="container">
+          <div class="filters__container">
+            <div class="filters__input">
+              <img src="./search-outline.svg" alt="search" />
+              <input type="text" placeholder="Search for a country" />
+            </div>
+            <div class="filters__select">
+              <button class="filters__select-btn">
+                <span>Filter by Region</span>
+                <img src="arrow-down-outline.svg" alt="" />
+              </button>
+              <div class="filters__select-menu">
+                <ul class="region__list">
+                  <li class="region__list-item">Asia</li>
+                  <li class="region__list-item">Europe</li>
+                  <li class="region__list-item">Africa</li>
+                  <li class="region__list-item">Oceania</li>
+                  <li class="region__list-item">America</li>
+                  <li class="region__list-item">Polar</li>
+                  <li class="region__list-item">Antartic</li>
+                  <li class="region__list-item">Antartic Ocean</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="countries">
+        <div class="container">
+          <div class="countries__container"></div>
+        </div>
+      </section>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>
