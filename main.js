@@ -1,6 +1,8 @@
+
 const container = document.querySelector(".countries__container");
 const menuItems = document.querySelector(".filters__select-menu");
 const menuBtn = document.querySelector(".filters__select-btn");
+const theme = document.querySelector('.header__theme')
 async function getData(url) {
   try {
     const response = await fetch(url);
@@ -43,21 +45,46 @@ function createCountryBlock(country) {
     countriesInfo.appendChild(element);
   }
   createAndAppendElement("h2", null, "country__title", country.name);
-  createAndAppendElement(
-    "p",
-    "Population: ",
-    "country__population",
-    country.population
-  );
+  createAndAppendElement("p","Population: ","country__population",country.population)
   createAndAppendElement("p", "Region: ", "country__region", country.region);
   createAndAppendElement("p", "Capital: ", "country__capital", country.capital);
 
   container.appendChild(div);
 }
+//Menu items
 menuBtn.addEventListener("click", () => {
   toggleMenu();
 });
 function toggleMenu() {
   menuItems.classList.toggle("hidden");
 }
-getCountryInfo();
+getCountryInfo()
+//dark theme
+const options = {
+  bottom: '64px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.1s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: false, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+const darkmode = new Darkmode(options)
+theme.addEventListener('click',()=>{
+    if(theme.children[1].classList.contains('hidden')){
+      theme.children[1].classList.remove('hidden')
+      theme.children[0].classList.add('hidden')
+    } else{
+      theme.children[1].classList.add('hidden')
+      theme.children[0].classList.remove('hidden')
+    }
+
+  darkmode.toggle()
+
+})
+//TODO
+//* 1. Поиск по фильтру и поиск по словам

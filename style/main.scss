@@ -30,16 +30,19 @@ li {
   margin: 0 auto;
 }
 .header {
-  background: $Dark-Blue;
+  //background: $Dark-Blue;
+  //color: $White;
+  background: $White;
+  color:$Very-Dark-Blue-text;
   box-shadow: 0 10px 20px 1px rgba(13, 13, 13, 0.34);
-  color: $White;
+
   padding: 20px 0;
   &__container {
     @include flex-center;
   }
 }
 .main {
-  background: $Very-Dark-Blue;
+  background: $Very-Light-Gray;
 }
 .filters {
   &__container {
@@ -47,11 +50,12 @@ li {
     padding: 40px 0;
   }
   &__input {
+    position: relative;
     img {
       //TODO FIX
       position: absolute;
-      top: 12.3%;
-      left: 13%;
+      top:10px;
+      left:10px;
 
       width: 20px;
     }
@@ -61,24 +65,22 @@ li {
       outline: none;
       border: none;
       border-radius: 5px;
-      color: $White;
-      background: $Dark-Blue;
+      color:$Very-Dark-Blue-text;
+      background: $White;
       &::placeholder {
         color: $White;
       }
     }
   }
 }
-.dark {
+.dark, .light {
   @include flex-center;
   cursor: pointer;
   img {
     width: 20px;
     margin-right: 10px;
   }
-  &:hover {
-    opacity: 0.8;
-  }
+
 }
 .hidden {
   display: none;
@@ -92,7 +94,7 @@ li {
   &__info {
     padding: 20px 24px 40px;
     font-size: 18px;
-    color: $White;
+    color:$Very-Dark-Blue-text;
     span {
       opacity: 1;
     }
@@ -101,9 +103,9 @@ li {
 .countries__container {
 }
 .country {
-  background: $Dark-Blue;
+  background: $White;
   border-radius: 5px;
-  transition: all 0.5s;
+  transition: ease 0.3s;
   &__image {
     width: 100%;
     border-radius: 5px;
@@ -135,6 +137,7 @@ li {
 
   img {
     width: 20px;
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(72deg) brightness(99%) contrast(99%);
   }
 }
 .filters__select-menu {
