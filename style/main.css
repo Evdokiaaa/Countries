@@ -1,4 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap");
+.header {
+  background: hsl(0, 0%, 100%);
+  color: hsl(200, 15%, 8%);
+  box-shadow: 0 10px 100px 1px rgba(13, 13, 13, 0.34);
+  padding: 20px 0;
+}
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -28,20 +40,9 @@ li {
   margin: 0 auto;
 }
 
-.header {
-  background: hsl(0, 0%, 100%);
-  color: hsl(200, 15%, 8%);
-  box-shadow: 0 10px 20px 1px rgba(13, 13, 13, 0.34);
-  padding: 20px 0;
-}
-.header__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .main {
   background: hsl(0, 0%, 98%);
+  padding: 10px 20px;
 }
 
 .filters__container {
@@ -68,10 +69,6 @@ li {
   color: hsl(200, 15%, 8%);
   background: hsl(0, 0%, 100%);
 }
-.filters__input input::placeholder {
-  color: hsl(0, 0%, 100%);
-}
-
 .dark, .light {
   display: flex;
   justify-content: space-between;
@@ -81,10 +78,6 @@ li {
 .dark img, .light img {
   width: 20px;
   margin-right: 10px;
-}
-
-.hidden {
-  display: none;
 }
 
 .countries__container {
@@ -110,7 +103,8 @@ li {
   width: 100%;
   border-radius: 5px;
   height: 12rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .country__title {
   margin-bottom: 20px;
@@ -162,4 +156,6 @@ li {
   opacity: 0.6;
 }
 
-/*# sourceMappingURL=main.css.map */
+.hidden {
+  display: none;
+}/*# sourceMappingURL=main.css.map */

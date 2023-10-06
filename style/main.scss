@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap");
 @import "./variables.scss";
+@import './header.scss';
 @mixin flex-center {
   display: flex;
   justify-content: space-between;
@@ -29,20 +30,20 @@ li {
   max-width: 1440px;
   margin: 0 auto;
 }
-.header {
-  //background: $Dark-Blue;
-  //color: $White;
-  background: $White;
-  color:$Very-Dark-Blue-text;
-  box-shadow: 0 10px 20px 1px rgba(13, 13, 13, 0.34);
-
-  padding: 20px 0;
-  &__container {
-    @include flex-center;
-  }
-}
+//.header {
+//  background: $White;
+//  color:$Very-Dark-Blue-text;
+//  box-shadow: 0 10px 20px 1px rgba(13, 13, 13, 0.34);
+//
+//  padding: 20px 0;
+//  &__container {
+//    @include flex-center;
+//  }
+//}
 .main {
   background: $Very-Light-Gray;
+  padding:10px 20px;
+
 }
 .filters {
   &__container {
@@ -68,7 +69,6 @@ li {
       color:$Very-Dark-Blue-text;
       background: $White;
       &::placeholder {
-        color: $White;
       }
     }
   }
@@ -82,9 +82,7 @@ li {
   }
 
 }
-.hidden {
-  display: none;
-}
+
 .countries {
   &__container {
     display: grid;
@@ -100,8 +98,7 @@ li {
     }
   }
 }
-.countries__container {
-}
+
 .country {
   background: $White;
   border-radius: 5px;
@@ -158,4 +155,7 @@ li {
       opacity: 0.6;
     }
   }
+}
+.hidden {
+  display: none;
 }

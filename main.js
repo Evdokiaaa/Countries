@@ -1,8 +1,9 @@
-
 const container = document.querySelector(".countries__container");
 const menuItems = document.querySelector(".filters__select-menu");
 const menuBtn = document.querySelector(".filters__select-btn");
-const theme = document.querySelector('.header__theme')
+const regions = document.querySelectorAll(".region__list-item");
+const theme = document.querySelector(".header__theme");
+
 async function getData(url) {
   try {
     const response = await fetch(url);
@@ -14,6 +15,7 @@ async function getData(url) {
     return null;
   }
 }
+
 async function getCountryInfo() {
   const data = await getData("data.json");
   for (const country of data) {
@@ -31,9 +33,12 @@ function createCountryBlock(country) {
   flag.className = "country__image";
   const imageLink = document.createElement("a");
   imageLink.className = "country__link";
+  imageLink.href = `/country.html?name=${country.name}`;
   imageLink.appendChild(flag);
+  imageLink.addEventListener("click", () => showCountryInfo(country));
   div.appendChild(imageLink);
   div.appendChild(countriesInfo);
+
   //TODO FIX H2 TAG
   function createAndAppendElement(el, elName = "", className, text) {
     const element = document.createElement(el);
@@ -44,47 +49,101 @@ function createCountryBlock(country) {
     element.appendChild(span);
     countriesInfo.appendChild(element);
   }
+
   createAndAppendElement("h2", null, "country__title", country.name);
-  createAndAppendElement("p","Population: ","country__population",country.population)
+  createAndAppendElement(
+    "p",
+    "Population: ",
+    "country__population",
+    country.population
+  );
   createAndAppendElement("p", "Region: ", "country__region", country.region);
   createAndAppendElement("p", "Capital: ", "country__capital", country.capital);
 
   container.appendChild(div);
 }
+
 //Menu items
 menuBtn.addEventListener("click", () => {
   toggleMenu();
 });
+
 function toggleMenu() {
   menuItems.classList.toggle("hidden");
 }
-getCountryInfo()
+
+getCountryInfo();
 //dark theme
 const options = {
-  bottom: '64px', // default: '32px'
-  right: 'unset', // default: '32px'
-  left: '32px', // default: 'unset'
-  time: '0.1s', // default: '0.3s'
-  mixColor: '#fff', // default: '#fff'
-  backgroundColor: '#fff',  // default: '#fff'
-  buttonColorDark: '#100f2c',  // default: '#100f2c'
-  buttonColorLight: '#fff', // default: '#fff'
+  bottom: "64px", // default: '32px'
+  right: "unset", // default: '32px'
+  left: "32px", // default: 'unset'
+  time: "0.1s", // default: '0.3s'
+  mixColor: "#fff", // default: '#fff'
+  backgroundColor: "#fff", // default: '#fff'
+  buttonColorDark: "#100f2c", // default: '#100f2c'
+  buttonColorLight: "#fff", // default: '#fff'
   saveInCookies: false, // default: true,
-  label: '🌓', // default: ''
-  autoMatchOsTheme: true // default: true
-}
-const darkmode = new Darkmode(options)
-theme.addEventListener('click',()=>{
-    if(theme.children[1].classList.contains('hidden')){
-      theme.children[1].classList.remove('hidden')
-      theme.children[0].classList.add('hidden')
-    } else{
-      theme.children[1].classList.add('hidden')
-      theme.children[0].classList.remove('hidden')
+  label: "🌓", // default: ''
+  autoMatchOsTheme: true, // default: true
+};
+const darkmode = new Darkmode(options);
+theme.addEventListener("click", () => {
+  if (theme.children[1].classList.contains("hidden")) {
+    theme.children[1].classList.remove("hidden");
+    theme.children[0].classList.add("hidden");
+  } else {
+    theme.children[1].classList.add("hidden");
+    theme.children[0].classList.remove("hidden");
+  }
+
+  darkmode.toggle();
+});
+
+//input
+const input = document.querySelector("input");
+input.addEventListener("input", (e) => {
+  let value = e.target.value;
+  const countries = document.querySelectorAll(".country");
+  countries.forEach((country) => {
+    const countryTitle = country.querySelector(".country__title");
+    if (countryTitle) {
+      const titleText = countryTitle.textContent.toLowerCase();
+      if (titleText.startsWith(value.toLowerCase())) {
+        country.classList.remove("hidden");
+      } else {
+        country.classList.add("hidden");
+      }
     }
+  });
+  if (value === "") {
+    countries.forEach((country) => {
+      country.classList.remove("hidden");
+    });
+  }
+});
 
-  darkmode.toggle()
+//! Filter by region
 
-})
-//TODO
-//* 1. Поиск по фильтру и поиск по словам
+function sortRegion(region) {
+  const countries = document.querySelectorAll(".country");
+  countries.forEach((country) => {
+    const countryRegion = country.querySelector(".country__region").textContent;
+    if (!countryRegion.includes(region)) {
+      country.classList.add("hidden");
+    } else {
+      console.log(countryRegion);
+      country.classList.remove("hidden");
+    }
+  });
+}
+
+const filterByRegion = (menu) => {
+  menu.forEach((menuItem) => {
+    menuItem.addEventListener("click", () => {
+      sortRegion(menuItem.textContent);
+      menuItems.classList.add("hidden");
+    });
+  });
+};
+filterByRegion(regions);

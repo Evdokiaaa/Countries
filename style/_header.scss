@@ -1,0 +1,18 @@
+@import "./variables.scss";
+@mixin flex-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header {
+  background: $White;
+  color:$Very-Dark-Blue-text;
+  box-shadow: 0 10px 100px 1px rgba(13, 13, 13, 0.34);
+  //position: fixed;
+  //width: 100%;
+  //z-index: 111;
+  padding: 20px 0;
+  &__container {
+    @include flex-center;
+  }
+}
