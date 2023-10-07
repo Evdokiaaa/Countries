@@ -83,11 +83,20 @@ const options = {
   backgroundColor: "#fff", // default: '#fff'
   buttonColorDark: "#100f2c", // default: '#100f2c'
   buttonColorLight: "#fff", // default: '#fff'
-  saveInCookies: false, // default: true,
+  saveInCookies: true, // default: true,
   label: "🌓", // default: ''
   autoMatchOsTheme: true, // default: true
 };
 const darkmode = new Darkmode(options);
+
+if (darkmode.isActivated()) {
+  theme.children[1].classList.remove("hidden");
+  theme.children[0].classList.add("hidden");
+} else {
+  theme.children[1].classList.add("hidden");
+  theme.children[0].classList.remove("hidden");
+}
+
 theme.addEventListener("click", () => {
   if (theme.children[1].classList.contains("hidden")) {
     theme.children[1].classList.remove("hidden");
