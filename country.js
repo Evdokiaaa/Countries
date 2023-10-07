@@ -15,12 +15,19 @@ const languages = document.querySelector(".languages");
 document.querySelector(".lds-ring").classList.remove("hidden");
 
 const fetching = async () => {
-  const response = await fetch(
-    `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
-  );
-  document.querySelector(".lds-ring").classList.add("hidden");
-  document.querySelector(".country__container").classList.remove("hidden");
-  return await response.json();
+  try {
+    const response = await fetch(
+      `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
+    );
+    if (response.ok) {
+      document.querySelector(".lds-ring").classList.add("hidden");
+      document.querySelector(".country__container").classList.remove("hidden");
+      return await response.json();
+    }
+  } catch (e) {
+    alert("some error appears, please try again");
+    document.querySelector(".lds-ring").classList.remove("hidden");
+  }
 };
 
 async function createCountryInfo() {
@@ -85,3 +92,4 @@ theme.addEventListener("click", () => {
 
   darkmode.toggle();
 });
+//TODO Тут есть проблемы с кореей
