@@ -4,14 +4,18 @@ const menuBtn = document.querySelector(".filters__select-btn");
 const regions = document.querySelectorAll(".region__list-item");
 const theme = document.querySelector(".header__theme");
 
+document.querySelector(".lds-ring").classList.remove("hidden");
+
 async function getData(url) {
   try {
     const response = await fetch(url);
     if (response.ok) {
+      document.querySelector(".lds-ring").classList.add("hidden");
       return await response.json();
     }
   } catch (e) {
     console.log("Error:", e);
+    document.querySelector(".lds-ring").classList.remove("hidden");
     return null;
   }
 }
@@ -31,6 +35,7 @@ function createCountryBlock(country) {
   const flag = document.createElement("img");
   flag.src = country.flag;
   flag.className = "country__image";
+  flag.classList.add("skeleton");
   const imageLink = document.createElement("a");
   imageLink.className = "country__link";
   imageLink.href = `/country.html?name=${country.name}`;
@@ -43,7 +48,9 @@ function createCountryBlock(country) {
   function createAndAppendElement(el, elName = "", className, text) {
     const element = document.createElement(el);
     const span = document.createElement("span");
+
     element.className = className;
+    element.classList.add("skeleton");
     element.textContent = elName;
     span.textContent = text;
     element.appendChild(span);

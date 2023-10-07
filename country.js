@@ -12,10 +12,14 @@ const domain = document.querySelector(".domain");
 const curriencies = document.querySelector(".curriencies");
 const languages = document.querySelector(".languages");
 
+document.querySelector(".lds-ring").classList.remove("hidden");
+
 const fetching = async () => {
   const response = await fetch(
     `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
   );
+  document.querySelector(".lds-ring").classList.add("hidden");
+  document.querySelector(".country__container").classList.remove("hidden");
   return await response.json();
 };
 

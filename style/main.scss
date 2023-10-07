@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap");
 @import "./variables.scss";
-@import './header.scss';
+@import "./header.scss";
 @mixin flex-center {
   display: flex;
   justify-content: space-between;
@@ -42,8 +42,7 @@ li {
 //}
 .main {
   background: $Very-Light-Gray;
-  padding:10px 20px;
-
+  padding: 10px 20px;
 }
 .filters {
   &__container {
@@ -55,8 +54,8 @@ li {
     img {
       //TODO FIX
       position: absolute;
-      top:10px;
-      left:10px;
+      top: 10px;
+      left: 10px;
 
       width: 20px;
     }
@@ -66,24 +65,25 @@ li {
       outline: none;
       border: none;
       border-radius: 5px;
-      color:$Very-Dark-Blue-text;
+      color: $Very-Dark-Blue-text;
       background: $White;
       &::placeholder {
       }
     }
   }
 }
-.dark, .light {
+.dark,
+.light {
   @include flex-center;
   cursor: pointer;
   img {
     width: 20px;
     margin-right: 10px;
   }
-
 }
 
 .countries {
+  background: $Very-Light-Gray;
   &__container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -92,7 +92,7 @@ li {
   &__info {
     padding: 20px 24px 40px;
     font-size: 18px;
-    color:$Very-Dark-Blue-text;
+    color: $Very-Dark-Blue-text;
     span {
       opacity: 1;
     }
@@ -134,7 +134,8 @@ li {
 
   img {
     width: 20px;
-    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(72deg) brightness(99%) contrast(99%);
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(72deg)
+      brightness(99%) contrast(99%);
   }
 }
 .filters__select-menu {
@@ -156,6 +157,46 @@ li {
     }
   }
 }
+
+//loader
+
+.lds-ring {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #d7d4d4;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #d7d6d6 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .hidden {
   display: none;
 }
