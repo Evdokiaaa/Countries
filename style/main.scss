@@ -30,16 +30,7 @@ li {
   max-width: 1440px;
   margin: 0 auto;
 }
-//.header {
-//  background: $White;
-//  color:$Very-Dark-Blue-text;
-//  box-shadow: 0 10px 20px 1px rgba(13, 13, 13, 0.34);
-//
-//  padding: 20px 0;
-//  &__container {
-//    @include flex-center;
-//  }
-//}
+
 .main {
   background: $Very-Light-Gray;
   padding: 10px 20px;
@@ -134,8 +125,7 @@ li {
 
   img {
     width: 20px;
-    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(72deg)
-      brightness(99%) contrast(99%);
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(72deg) brightness(99%) contrast(99%);
   }
 }
 .filters__select-menu {

@@ -38,13 +38,11 @@ function createCountryBlock(country) {
   flag.classList.add("skeleton");
   const imageLink = document.createElement("a");
   imageLink.className = "country__link";
-  imageLink.href = `/country.html?name=${country.name}`;
+  imageLink.href = `./pages/country.html?name=${country.name}`;
   imageLink.appendChild(flag);
-  imageLink.addEventListener("click", () => showCountryInfo(country));
   div.appendChild(imageLink);
   div.appendChild(countriesInfo);
 
-  //TODO FIX H2 TAG
   function createAndAppendElement(el, elName = "", className, text) {
     const element = document.createElement(el);
     const span = document.createElement("span");
@@ -148,7 +146,6 @@ function sortRegion(region) {
     if (!countryRegion.includes(region)) {
       country.classList.add("hidden");
     } else {
-      console.log(countryRegion);
       country.classList.remove("hidden");
     }
   });

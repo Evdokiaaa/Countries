@@ -32,7 +32,6 @@ const fetching = async () => {
 
 async function createCountryInfo() {
   let [country] = await fetching();
-  console.log(country);
   flag.src = country.flags.png;
   flag.alt = country.name;
   name.textContent = country.name.common;
@@ -56,7 +55,6 @@ async function createCountryInfo() {
     : "-";
 }
 createCountryInfo();
-//TODO Сдераем границы , добавим лоадеры  + анимации. Возможно адаптив
 
 const options = {
   bottom: "64px", // default: '32px'
@@ -92,4 +90,3 @@ theme.addEventListener("click", () => {
 
   darkmode.toggle();
 });
-//TODO Тут есть проблемы с кореей
