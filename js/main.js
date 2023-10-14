@@ -42,12 +42,7 @@ function createCountryBlock(country) {
   imageLink.appendChild(flag);
   div.append(imageLink, countriesInfo);
 
-  function createAndAppendElement({
-    element,
-    elementName = "",
-    elementClass,
-    elementText
-  }) {
+  function createAndAppendElement({ element, elementName = "", elementClass, elementText }) {
     const elementType = document.createElement(element);
     const span = document.createElement("span");
 
@@ -88,13 +83,11 @@ function createCountryBlock(country) {
 }
 
 // Menu items
-function toggleMenu() {
+const toggleFilterMenu = () => {
   filterMenu.classList.toggle("hidden");
-}
-filter.addEventListener("click", () => {
-  toggleMenu();
-});
+};
 
+filter.addEventListener("click", toggleFilterMenu);
 getCountryInfo();
 
 // Dark theme
