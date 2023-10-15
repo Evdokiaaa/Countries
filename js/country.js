@@ -1,3 +1,6 @@
+import themeToggle from "./theme.js";
+import getData from "./api.js";
+
 const countryName = new URLSearchParams(location.search).get("name");
 const theme = document.querySelector(".header__theme");
 
@@ -9,35 +12,15 @@ const region = document.querySelector(".region");
 const capital = document.querySelector(".capital");
 const subRegion = document.querySelector(".sub__region");
 const domain = document.querySelector(".domain");
-const curriencies = document.querySelector(".curriencies");
+const currencies = document.querySelector(".currencies");
 const languages = document.querySelector(".languages");
 
-document.querySelector(".lds-ring").classList.remove("hidden");
-
-const fetching = async () => {
-  try {
-    const response = await fetch(
-      `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
-    );
-    if (response.ok) {
-      document.querySelector(".lds-ring").classList.add("hidden");
-      document.querySelector(".country__container").classList.remove("hidden");
-      return await response.json();
-    }
-  } catch (e) {
-    alert("some error appears, please try again");
-    document.querySelector(".lds-ring").classList.remove("hidden");
-  }
-};
-
 async function createCountryInfo() {
-  let [country] = await fetching();
+  let [country] = await getData(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`,true);
   flag.src = country.flags.png;
   flag.alt = country.name;
   name.textContent = country.name.common;
-  if (country.name.nativeName) {
-    nativeName.textContent = Object.values(country.name.nativeName)[0].common;
-  } else country.name.common;
+  nativeName.textContent = country.name.nativeName? Object.values(country.name.nativeName)[0].common:country.name.common; 
   population.textContent = country.population.toLocaleString();
   region.textContent = country.region;
   capital.textContent = country.capital
@@ -47,7 +30,7 @@ async function createCountryInfo() {
     ? country.subregion
     : "There is no sub region";
   domain.textContent = country.tld.join(",");
-  curriencies.textContent = country.currencies
+  currencies.textContent = country.currencies
     ? Object.values(country.currencies).map((item) => item.name)
     : "There no official currencies";
   languages.textContent = country.languages
@@ -55,38 +38,4 @@ async function createCountryInfo() {
     : "-";
 }
 createCountryInfo();
-
-const options = {
-  bottom: "64px", // default: '32px'
-  right: "unset", // default: '32px'
-  left: "32px", // default: 'unset'
-  time: "0.1s", // default: '0.3s'
-  mixColor: "#fff", // default: '#fff'
-  backgroundColor: "#fff", // default: '#fff'
-  buttonColorDark: "#100f2c", // default: '#100f2c'
-  buttonColorLight: "#fff", // default: '#fff'
-  saveInCookies: true, // Теперь сохраняется состояние темы в куки
-  label: "🌓", // default: ''
-  autoMatchOsTheme: true, // default: true
-};
-const darkmode = new Darkmode(options);
-
-if (darkmode.isActivated()) {
-  theme.children[1].classList.remove("hidden");
-  theme.children[0].classList.add("hidden");
-} else {
-  theme.children[1].classList.add("hidden");
-  theme.children[0].classList.remove("hidden");
-}
-
-theme.addEventListener("click", () => {
-  if (theme.children[1].classList.contains("hidden")) {
-    theme.children[1].classList.remove("hidden");
-    theme.children[0].classList.add("hidden");
-  } else {
-    theme.children[1].classList.add("hidden");
-    theme.children[0].classList.remove("hidden");
-  }
-
-  darkmode.toggle();
-});
+themeToggle(theme);

@@ -1,31 +1,20 @@
+
+import themeToggle from "./theme.js";
+import getData from "./api.js";
+
 const countriesContainer = document.querySelector(".countries__container");
 const filterMenu = document.querySelector(".filters__select-menu");
 const filter = document.querySelector(".filters__select-btn");
 const regions = document.querySelectorAll(".region__list-item");
 const theme = document.querySelector(".header__theme");
 
-document.querySelector(".lds-ring").classList.remove("hidden");
-
-async function getData(url) {
-  try {
-    const response = await fetch(url);
-    if (response.ok) {
-      document.querySelector(".lds-ring").classList.add("hidden");
-      return await response.json();
-    }
-  } catch (e) {
-    console.log("Error:", e);
-    document.querySelector(".lds-ring").classList.remove("hidden");
-    return null;
-  }
-}
-
 async function getCountryInfo() {
   const data = await getData("data.json");
   for (const country of data) {
-    createCountryBlock(country); //! dont like this too mych
+    createCountryBlock(country); //! don't like this too much
   }
 }
+
 
 function createCountryBlock(country) {
   const div = document.createElement("div");
@@ -42,7 +31,12 @@ function createCountryBlock(country) {
   imageLink.appendChild(flag);
   div.append(imageLink, countriesInfo);
 
-  function createAndAppendElement({ element, elementName = "", elementClass, elementText }) {
+  function createAndAppendElement({
+    element,
+    elementName = "",
+    elementClass,
+    elementText,
+  }) {
     const elementType = document.createElement(element);
     const span = document.createElement("span");
 
@@ -58,25 +52,25 @@ function createCountryBlock(country) {
     element: "h2",
     elementName: null,
     elementClass: "country__title",
-    elementText: country.name
+    elementText: country.name,
   });
   createAndAppendElement({
     element: "p",
     elementName: "Population: ",
     elementClass: "country__population",
-    elementText: country.population
+    elementText: country.population,
   });
   createAndAppendElement({
     element: "p",
     elementName: "Region: ",
     elementClass: "country__region",
-    elementText: country.region
+    elementText: country.region,
   });
   createAndAppendElement({
     element: "p",
     elementName: "Capital: ",
     elementClass: "country__capital",
-    elementText: country.capital
+    elementText: country.capital,
   });
 
   countriesContainer.appendChild(div);
@@ -88,32 +82,6 @@ const toggleFilterMenu = () => {
 };
 
 filter.addEventListener("click", toggleFilterMenu);
-getCountryInfo();
-
-// Dark theme
-const options = {
-  bottom: "64px", // default: '32px'
-  right: "unset", // default: '32px'
-  left: "32px", // default: 'unset'
-  time: "0.1s", // default: '0.3s'
-  mixColor: "#fff", // default: '#fff'
-  backgroundColor: "#fff", // default: '#fff'
-  buttonColorDark: "#100f2c", // default: '#100f2c'
-  buttonColorLight: "#fff", // default: '#fff'
-  saveInCookies: true, // default: true,
-  label: "🌓", // default: ''
-  autoMatchOsTheme: true // default: true
-};
-
-const darkmode = new Darkmode(options);
-
-theme.addEventListener("click", () => {
-  const [light, dark] = theme.children;
-  const isActivated = darkmode.isActivated(); // false
-  light.classList.toggle("hidden", !isActivated); // При первом клики добавляется классс хидден из за усл
-  dark.classList.toggle("hidden", isActivated);
-  darkmode.toggle();
-});
 
 // Input
 const input = document.querySelector("input");
@@ -161,3 +129,5 @@ const filterByRegion = (menu) => {
   });
 };
 filterByRegion(regions);
+getCountryInfo();
+themeToggle(theme);
