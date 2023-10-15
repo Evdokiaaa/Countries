@@ -1,4 +1,3 @@
-
 import themeToggle from "./theme.js";
 import getData from "./api.js";
 
@@ -15,7 +14,6 @@ async function getCountryInfo() {
   }
 }
 
-
 function createCountryBlock(country) {
   const div = document.createElement("div");
   div.className = "country";
@@ -31,12 +29,7 @@ function createCountryBlock(country) {
   imageLink.appendChild(flag);
   div.append(imageLink, countriesInfo);
 
-  function createAndAppendElement({
-    element,
-    elementName = "",
-    elementClass,
-    elementText,
-  }) {
+  function createAndAppendElement({ element, elementName = "", elementClass, elementText }) {
     const elementType = document.createElement(element);
     const span = document.createElement("span");
 
@@ -48,29 +41,24 @@ function createCountryBlock(country) {
     countriesInfo.appendChild(elementType);
   }
 
-  createAndAppendElement({
-    element: "h2",
-    elementName: null,
-    elementClass: "country__title",
-    elementText: country.name,
-  });
+  createAndAppendElement({ element: "h2", elementName: null, elementClass: "country__title", elementText: country.name });
   createAndAppendElement({
     element: "p",
     elementName: "Population: ",
     elementClass: "country__population",
-    elementText: country.population,
+    elementText: country.population
   });
   createAndAppendElement({
     element: "p",
     elementName: "Region: ",
     elementClass: "country__region",
-    elementText: country.region,
+    elementText: country.region
   });
   createAndAppendElement({
     element: "p",
     elementName: "Capital: ",
     elementClass: "country__capital",
-    elementText: country.capital,
+    elementText: country.capital
   });
 
   countriesContainer.appendChild(div);

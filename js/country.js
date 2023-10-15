@@ -16,11 +16,11 @@ const currencies = document.querySelector(".currencies");
 const languages = document.querySelector(".languages");
 
 async function createCountryInfo() {
-  let [country] = await getData(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`,true);
+  const [country] = await getData(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`, true);
   flag.src = country.flags.png;
   flag.alt = country.name;
   name.textContent = country.name.common;
-  nativeName.textContent = country.name.nativeName? Object.values(country.name.nativeName)[0].common:country.name.common; 
+  nativeName.textContent = country.name.nativeName ? Object.values(country.name.nativeName)[0].common : country.name.common;
   population.textContent = country.population.toLocaleString();
   region.textContent = country.region;
   capital.textContent = country.capital
